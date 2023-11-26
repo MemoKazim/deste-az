@@ -1,3 +1,88 @@
+@media screen and (max-width: 800px) {
+  .main-about {
+    padding: 2rem 0 !important;
+  }
+  .main-about-content {
+    width: 80% !important;
+    font-size: 1rem !important;
+  }
+  .event-card-image {
+    width: 20rem !important;
+    height: 20rem !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+  .event-card-title {
+    margin-top: 20rem !important;
+    /* font-size: 1.2rem;
+    font-weight: 500; */
+  }
+  .event-card {
+    height: 35rem !important;
+  }
+  .news-card-image {
+    display: none !important;
+  }
+  .news-card {
+    height: 25rem !important;
+  }
+  .footer-left,
+  .footer-right {
+    border: none !important;
+  }
+  .general-logo {
+    width: 25rem !important;
+    height: auto !important;
+  }
+  .general-topic-2 {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+  }
+  .general-border {
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+  body > :nth-child(3) {
+    flex-direction: column !important;
+  }
+  .general-topic-3 {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+  }
+  .galery-image {
+    width: 90% !important;
+    height: auto !important;
+  }
+  .galery-image-fullscreen {
+    flex-direction: column-reverse !important;
+  }
+  .famous-card {
+    width: 100% !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .galery-video-card {
+    width: 100% !important;
+  }
+  .video-frame {
+    width: 100% !important;
+    height: 20rem !important;
+  }
+  .form-side {
+    display: block !important;
+    gap: 0 !important;
+  }
+  .membership-form {
+    width: 100% !important;
+  }
+  #message {
+    width: 100% !important;
+  }
+}
+
 * {
   text-decoration: none;
   margin: 0;
