@@ -11,6 +11,8 @@ const Hero = require("../models/heroModel");
 const New = require("../models/newModel");
 const Member = require("../models/memberModel");
 
+const validator = require("validator");
+
 const models = {
   community: Community,
   mission: Mission,
@@ -227,11 +229,11 @@ exports.getContact = async (req, res) => {
 
 exports.saveMember = async (req, res) => {
   const newMember = await new Member({
-    name: req.body.name,
-    surname: req.body.surname,
-    email: req.body.email,
-    phone: req.body.phone,
-    message: req.body.message,
+    name: validator.escape(req.body.name),
+    surname: validator.escape(req.body.surname),
+    email: validator.escape(req.body.email),
+    phone: validator.escape(req.body.phone),
+    message: validator.escape(req.body.message),
   });
   const [abouts, communities, missions, socials] = await regularCollections();
   const [contacts] = await requiredCollections([Contact]);
@@ -239,7 +241,7 @@ exports.saveMember = async (req, res) => {
   await newMember
     .save()
     .catch((err) => {
-      console.log(error);
+      console.log(err);
     })
     .then(
       res.status(200).render("public/contact", {
