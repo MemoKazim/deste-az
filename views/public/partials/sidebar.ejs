@@ -1,0 +1,28 @@
+<div class="sidebar">
+    <div class="sidebar-events">
+        <span class="sidebar-title">Tədbirlər</span>
+        <%let eventLength = events.length;
+        if (events.length > 3){
+            eventLength = 3;
+        }
+        for (i = 0; i < eventLength; i++){%>
+            <%-include("sidebar-event", {result: events[i]})-%>
+            <%if (i < eventLength - 1){%>
+                <hr>
+            <%}%>
+        <%}%>
+    </div>
+    <div class="sidebar-news">
+        <span class="sidebar-title">Xəbərlər</span>
+        <%let newLength = news.length;
+        if (news.length > 3){
+            newLength = 3;
+        }
+        for (i = 0; i < newLength; i++){%>
+            <%-include("sidebar-new", {result: news[i]})-%>
+            <%if (i < newLength - 1){%>
+                <hr>
+            <%}%>
+        <%}%>
+    </div>
+</div>

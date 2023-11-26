@@ -1,0 +1,63 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/missions/update/<%=result.id%>" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="">Name: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="name" placeholder="Navbar name" value="<%=result.name%>" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Title: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="title" placeholder="Title" value="<%=result.title%>" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Content: </label>
+        </td>
+        <td>
+          <textarea type="text" class="textarea-fields" name="content" placeholder="Content..." required><%-result.content-%></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Template Type: </label>
+        </td>
+        <td>
+            <select name="templateType" onchange="showBlueprint(this)">
+                <%if (result.templateType===1){%>
+                    <option value="1" selected>Only Text</option>
+                    <option value="2">Text + Image</option>
+                    <option value="3">Text + Image + Sidebar</option>
+                <%} else if (result.templateType===2) { %>
+                    <option value="1">Only Text</option>
+                    <option value="2" selected>Text + Image</option>
+                    <option value="3">Text + Image + Sidebar</option>
+                <%} else { %>
+                    <option value="1">Only Text</option>
+                    <option value="2">Text + Image</option>
+                    <option value="3" selected>Text + Image + Sidebar</option>
+                <%} %>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Choosen template blueprint: </td>
+        <td>
+            <img src="/images/temp<%=result.templateType%>.png" alt="Blueprint Image" width="450rem" height="250rem" id="template" onchange="showBlueprint()">
+        </td>
+      </tr>
+      <tr>
+        <td><button type="submit" class="button update">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+<%-include("partials/footer")-%>

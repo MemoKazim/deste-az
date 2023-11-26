@@ -1,0 +1,27 @@
+<%-include("partials/header", {title: title, nav: nav})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <table class="styled-table table-1">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>Message</td>
+        <td>Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%-result.name-%></td>
+        <td><%-result.surname-%></td>
+        <td><%-result.phone-%></td>
+        <td><%-result.email-%></td>
+        <td><%-result.message-%></td>
+        <td><%-result.date.getDate()-%>-<%-result.date.getMonth()+1-%>-<%-result.date.getFullYear()-%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%-include("partials/footer")-%>

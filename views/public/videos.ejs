@@ -1,0 +1,20 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+
+<div class="general-topic-1">
+    <div class="general-title">
+        <%-title-%>
+    </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <%videos.forEach((elem) => {%>
+            <%-include("partials/video-card", {current:elem})-%>
+        <%});%>
+    </div>
+    <div class="galery-image-fullscreen" style="display: none;">
+        <iframe src="#" frameborder="0" class="video-frame"></iframe>
+        <span onclick="offFullscreen()"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></span>
+    </div>
+</div>
+
+<%-include("partials/footer")-%>

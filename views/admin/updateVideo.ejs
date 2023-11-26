@@ -1,0 +1,28 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/videos/update/<%=result.id%>" method="post">
+    <table>
+        <tr>
+            <td>
+                <label for="">Title: </label>
+            </td>
+            <td>
+                <input type="text" class="text-fields" name="title" placeholder="Title" value="<%=result.title%>" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="">Video URL: </label>
+            </td>
+            <td>
+                <input type="text" class="text-fields" name="title" placeholder="Video URL" value="<%=result.video%>" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td><button type="submit" class="button update">Submit</button></td>
+        </tr>
+    </table>
+  </form>
+<%-include("partials/footer")-%>

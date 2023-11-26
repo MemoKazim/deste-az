@@ -1,0 +1,7 @@
+<div class="famous-card">
+    <a href="/hero/<%=current._id%>"><img class="famous-card-image" src="/images/<%=current.image%>"/></a>
+    <div class="famous-card-detail">
+        <a class="famous-card-title" href="/hero/<%=current._id%>"><%-current.name.charAt(0).toUpperCase() + current.name.slice(1);-%> <%-current.surname.charAt(0).toUpperCase() + current.surname.slice(1)-%></a>
+        <div class="famous-card-content"><%-current.content.substring(0,100)-%>...</div>
+    </div>
+</div>

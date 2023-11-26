@@ -1,0 +1,9 @@
+<div class="event-card">
+    <a href="/event/<%=current._id%>">
+        <img class="event-card-image" src="/images/<%=current.imageCover%>" alt="Event image">
+    </a>
+    <div class="event-card-title"><%-current.title-%></div>
+    <div class="event-card-content"><%-current.content.substring(0,100)-%>...</div>
+    <div class="event-card-date">Paylaşılıb: <%-current.date.getDate()-%>-<%-current.date.getMonth()+1-%>-<%-current.date.getFullYear()-%></div>
+    <a href="/event/<%=current._id%>" class="event-card-read-more">Ətraflı</a>
+</div>

@@ -1,0 +1,11 @@
+<div class="news-card">
+    <div class="news-card-left">
+        <img class="news-card-image" src="/images/<%=current.imageCover%>" alt="news image">
+    </div>
+    <div class="news-card-right">
+        <div class="news-card-title"><%-current.title-%></div>
+        <div class="news-card-content"><%-current.content.substring(0,300)-%>...</div>
+        <div class="news-card-date">Paylasilib: <%-current.date.getDate()-%>-<%-current.date.getMonth()+1-%>-<%-current.date.getFullYear()-%></div>
+        <a href="/new/<%=current._id%>" class="news-card-read-more">Ətraflı</a>
+    </div>
+</div>

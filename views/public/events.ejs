@@ -1,0 +1,19 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+
+<div class="general-topic-1">
+    <div class="general-title">
+        <%-title-%>
+    </div>
+    
+    <div class="event" style="width: 100%; margin: 1.5rem 0;">
+        <div class="events">
+            <%events.forEach((elem) => {%>
+                <%-include("partials/event-card", {current: elem})-%>
+            <%});%>
+        </div>
+    </div>
+</div>
+
+<%-include("partials/footer")-%>

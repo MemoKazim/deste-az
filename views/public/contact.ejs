@@ -1,0 +1,13 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 1rem; width: 80%; margin: 2rem 0 2rem 10%;">
+    <%contacts.forEach((elem) => {%>
+        <%-include("partials/contact-card", {current: elem})-%>
+    <%})%>
+
+</div>
+
+<%-include("partials/membership-form")-%>
+
+<%-include("partials/footer")-%>

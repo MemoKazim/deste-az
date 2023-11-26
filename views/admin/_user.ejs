@@ -1,0 +1,42 @@
+<%-include("partials/header", {title: title})-%>
+
+<div class="asset-1">
+    <table class="styled-table table-1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let counter = 1;
+            result.forEach((data)=>{%>
+                <tr>
+                    <td><%-counter-%></td>
+                    <td><%-data.username-%></td>
+                    <td><%-data.email-%></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <form action="/admin/users/update/<%=data._id%>" method="get">
+                                        <button type="submit" class="button update">Update</button>
+                                    </form>
+                                </td>
+                                <%if(result.length > 1){%>
+                                <td>
+                                    <form action="/admin/users/delete/<%=data._id%>" method="post">
+                                        <button type="submit" class="button delete">Delete</button>
+                                    </form>
+                                </td>
+                                <%}%>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            <%counter+=1})%>
+        </tbody>
+    </table>
+<%-include("partials/footer")-%>

@@ -1,0 +1,16 @@
+        <footer>
+            <div class="footer-left">
+                <a href="/"><img src="/images/logo.png" alt="Logo"></a>
+                <div class="footer-logo">
+                    <%socials.forEach((elem)=>{%>
+                        <a href="<%=elem.web%>" class="footer-logo-item"><%-elem.logo-%></a>
+                    <%});%>
+                </div>
+            </div>
+            <div class="footer-right">
+                Copyright &copy;. Bütün hüqüqlar qorunur. Dəstə Cəmiyyəti <%-new Date().getFullYear();-%>.
+            </div>
+        </footer>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

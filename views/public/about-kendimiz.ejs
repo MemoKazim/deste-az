@@ -1,0 +1,18 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+
+<div class="general-topic-2">
+    <div class="general-title">
+        <%-result.title-%>
+    </div>
+    
+    <div class="general-border">
+        <img src="/images/<%=result.image%>" alt="Logo" class="general-logo">
+        <div class="general-content">
+            <%-result.content-%>
+        </div>
+    </div>
+</div>
+
+<%-include("partials/footer")-%>

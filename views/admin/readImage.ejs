@@ -1,0 +1,23 @@
+<%-include("partials/header", {title: title, nav: nav})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <table class="styled-table table-1">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Image</td>
+        <td>Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%-result.title-%></td>
+        <td>
+            <img src="/images/<%=result.image%>" alt="Image" width="400rem" height="auto"/>
+        </td>
+        <td><%-result.date.getDate()-%>-<%-result.date.getMonth()+1-%>-<%-result.date.getFullYear()-%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%-include("partials/footer")-%>

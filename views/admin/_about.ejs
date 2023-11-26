@@ -1,0 +1,63 @@
+<%-include("partials/header", {title: title})-%>
+
+      <div class="asset-1">
+        <div class="title-create">
+            <h1><%-title-%></h1>
+            <a href="/admin/abouts/create" class="button create">Create</a>
+        </div>
+        <table class="styled-table table-1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Template</th>
+                    <th>Content</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let counter = 1;
+                result.forEach((data)=>{%>
+                    <tr>
+                        <td><%-counter-%></td>
+                        <td><%-data.name-%></td>
+                        <td><%-data.title-%></td>
+                        <td><%-data.templateType-%></td>
+                        <td><%-data.content.substring(0,50);-%>...</td>
+                        <td><%-data.image-%></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <form action="/admin/abouts/<%=data._id%>" method="get">
+                                            <button type="submit" class="button read">Read</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/abouts/update/<%=data._id%>" method="get">
+                                            <button type="submit" class="button update">Update</button>
+                                        </form>
+                                    </td>
+                                    <%if (data.templateType != 1) {%>
+                                    <td>
+                                        <form action="/admin/abouts/update/photo/<%=data._id%>" method="get">
+                                            <button type="submit" class="button update">Update Image</button>
+                                        </form>
+                                    </td>
+                                    <%}%>
+                                    <td>
+                                        <form action="/admin/abouts/delete/<%=data._id%>" method="post">
+                                            <button type="submit" class="button delete">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                <%counter+=1})%>
+            </tbody>
+        </table>
+    </div>
+<%-include("partials/footer")-%>

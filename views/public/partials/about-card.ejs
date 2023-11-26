@@ -1,0 +1,6 @@
+<div class="about-card">
+    <div class="about-card-image" style="background-image: linear-gradient(to top, #000000ab, #000000ab), url('/images/<%=current.image%>');"><a href="/<%=current.endpoint%>" class="about-card-title"><%-current.name-%></a></div>
+    <div class="about-card-content"><%-current.content.substring(0,100)-%>...</div>
+    <div class="about-card-date">Paylaşılıb: <%-current.date.getDate()-%>-<%-current.date.getMonth()+1-%>-<%-current.date.getFullYear()-%></div>
+    <a href="/<%=current.endpoint%>" class="about-card-read-more">Ətraflı</a>
+</div>

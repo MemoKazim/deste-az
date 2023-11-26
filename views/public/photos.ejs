@@ -1,0 +1,22 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+
+<div class="general-topic-1">
+    <div class="general-title">
+        <%-title-%>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.2rem">
+        <%images.forEach((elem) => {%>
+            <%-include("partials/image-card", {current: elem})-%>
+        <%});%>
+    </div>
+    
+    <div class="galery-image-fullscreen" style="display: none;">
+        <img src="#" class="galery-image">
+        <span onclick="offFullscreen()"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></span>
+    </div>
+
+</div>
+
+<%-include("partials/footer")-%>

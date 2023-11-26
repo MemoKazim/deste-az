@@ -1,0 +1,76 @@
+<div class="quotas"></div>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Haqqımızda
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%abouts.forEach((elem) => {%>
+                        <a class="dropdown-item" href="/<%=elem.endpoint%>"><%-elem.name-%></a>
+                    <%});%>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dəstə
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%communities.forEach((elem) => {%>
+                        <a class="dropdown-item" href="/<%=elem.endpoint%>"><%-elem.name-%></a>
+                    <%});%>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Fəaliyyətimiz
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/news">Xəbərlər</a>
+                    <a class="dropdown-item" href="/events">Tədbirlər</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Missiyamız
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%missions.forEach((elem) => {%>
+                        <a class="dropdown-item" href="/<%=elem.endpoint%>"><%-elem.name-%></a>
+                    <%});%>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Fəxrlərimiz
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/famouses">Tanınmış Şəxsiyyətlər</a>
+                    <a class="dropdown-item" href="/heroes">Şəhidlərimiz</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Qalareya
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/galery-photo">Şəkillər</a>
+                    <a class="dropdown-item" href="/galery-video">Videolar</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/membership">Üzv Ol</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Əlaqə</a>
+            </li>
+        </ul>
+    </div>
+</nav>

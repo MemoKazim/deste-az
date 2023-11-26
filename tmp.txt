@@ -1,0 +1,224 @@
+router
+  .get("/abouts/", adminController.readAllAbout)
+  .get("/abouts/create", adminController.createGetAbout)
+  .post("/abouts/create", adminController.createAbout)
+  .get("/abouts/update/:id", adminController.updateGetAbout)
+  .post("/abouts/update/:id", adminController.updateAbout)
+  .post("/abouts/delete/:id", adminController.deleteAbout)
+  .get("/abouts/:id", adminController.readAbout);
+
+|===========================================================================|
+
+router
+  .get("/communities/", adminController.readAllCommunity)
+  .get("/communities/create", adminController.createGetCommunity)
+  .post(
+    "/communities/create",
+    adminController.uploadPhoto,
+    adminController.compressPhoto,
+    adminController.createCommunity
+  )
+  .get("/communities/update/photo/:id", adminController.updateGetCommunityPhoto)
+  .post(
+    "/communities/update/photo/:id",
+    adminController.uploadPhoto,
+    adminController.compressPhoto,
+    adminController.updateCommunityPhoto
+  )
+  .get("/communities/update/:id", adminController.updateGetCommunity)
+  .post("/communities/update/:id", adminController.updateCommunity)
+  .post("/communities/delete/:id", adminController.deleteCommunity)
+  .get("/communities/:id", adminController.readCommunity);
+
+
+//=======================|WITHOUT PHOTO|=======================//
+
+exports.readAllContact = async (req, res) => {
+  const allContact = await Contact.find().catch((err) => {
+    throw err;
+  });
+  res
+    .status(200)
+    .render("admin/_contact", { result: allContact, title: "Contact" });
+};
+exports.readContact = async (req, res) => {
+  const singleContact = await Contact.findById(req.params.id);
+  res.status(200).render("admin/readContact", {
+    result: singleContact,
+    title: "Contact Details",
+    nav: "contacts",
+  });
+};
+exports.createGetContact = async (req, res) => {
+  await res.status(200).render("admin/createContact", {
+    nav: "contacts",
+    title: "Create Contact",
+  });
+};
+exports.createContact = async (req, res) => {
+  let newContact = await new Contact({
+    title: req.body.title,
+    logo: req.body.logo,
+  });
+  await newContact
+    .save()
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      res.status(201).redirect("/admin/contacts");
+    });
+};
+exports.updateGetContact = async (req, res) => {
+  const singleContact = await Contact.findById(req.params.id).catch((err) => {
+    console.log(err);
+  });
+  res.status(200).render("admin/updateContact", {
+    result: singleContact,
+    title: "Update Contact",
+    nav: "contacts",
+  });
+};
+exports.updateContact = async (req, res) => {
+  let update = {};
+  let bluePrint = {
+    title: req.body.title,
+    logo: req.body.logo,
+  };
+  for (const key of Object.keys(bluePrint)) {
+    if (bluePrint[key] !== "") {
+      update[key] = bluePrint[key];
+    }
+  }
+  await Contact.findOneAndUpdate({ _id: req.params.id }, update);
+  res.status(204).redirect("/admin/contacts");
+};
+exports.deleteContact = async (req, res) => {
+  await Contact.findByIdAndDelete(req.params.id);
+  res.status(200).redirect("/admin/contacts");
+};
+
+//=======================|WITH PHOTO|=======================//
+exports.readAllCommunity = async (req, res) => {
+  const allCommunity = await Community.find().catch((err) => {
+    throw err;
+  });
+  res
+    .status(200)
+    .render("admin/_community", { result: allCommunity, title: "Community" });
+};
+exports.readCommunity = async (req, res) => {
+  const singleCommunity = await Community.findById(req.params.id);
+  res.status(200).render("admin/readCommunity", {
+    result: singleCommunity,
+    title: "Community Details",
+    nav: "communities",
+  });
+};
+exports.createGetCommunity = async (req, res) => {
+  await res.status(200).render("admin/createCommunity", {
+    nav: "communities",
+    title: "Create Community",
+  });
+};
+exports.createCommunity = async (req, res) => {
+  let newCommunity;
+  if (req.body.templateType == 1) {
+    newCommunity = await new Community({
+      name: req.body.name,
+      title: req.body.title,
+      content: req.body.content,
+      templateType: req.body.templateType,
+      endpoint: endPoint(req.body.name, "community"),
+    });
+  } else {
+    newCommunity = await new Community({
+      name: req.body.name,
+      title: req.body.title,
+      content: req.body.content,
+      templateType: req.body.templateType,
+      endpoint: endPoint(req.body.name, "community"),
+      image: req.file.filename,
+    });
+  }
+  await createTemplate(
+    req.body.templateType,
+    endPoint(req.body.name, "community")
+  );
+  await newCommunity
+    .save()
+    .catch((err) => {
+      console.log(err);
+    })
+    .then(() => {
+      res.status(201).redirect("/admin/communities");
+    });
+};
+exports.updateGetCommunity = async (req, res) => {
+  const singleCommunity = await Community.findById(req.params.id).catch(
+    (err) => {
+      console.log(err);
+    }
+  );
+  res.status(200).render("admin/updateCommunity", {
+    result: singleCommunity,
+    title: "Update Community",
+    nav: "communities",
+  });
+};
+exports.updateCommunity = async (req, res) => {
+  let update = {};
+  let bluePrint = {
+    name: req.body.name,
+    title: req.body.title,
+    templateType: req.body.templateType,
+    content: req.body.content,
+    endpoint: endPoint(req.body.name, "community"),
+  };
+  for (const key of Object.keys(bluePrint)) {
+    if (bluePrint[key] !== "") {
+      update[key] = bluePrint[key];
+    }
+  }
+  if (req.body.templateType != "" || req.body.name != "") {
+    await deleteTemplate("community", req.params.id);
+    await createTemplate(
+      req.body.templateType,
+      endPoint(req.body.name, "community")
+    );
+  }
+  await Community.findOneAndUpdate({ _id: req.params.id }, update);
+  res.status(204).redirect("/admin/communities");
+};
+exports.updateGetCommunityPhoto = async (req, res) => {
+  const singleCommunity = await Community.findById(req.params.id).catch(
+    (err) => {
+      throw err;
+    }
+  );
+  res.status(200).render("admin/updateCommunityPhoto", {
+    result: singleCommunity,
+    title: "Update Community",
+    nav: "communities",
+  });
+};
+exports.updateCommunityPhoto = async (req, res) => {
+  let update = {};
+  let bluePrint = {
+    image: req.file.filename,
+  };
+  for (const key of Object.keys(bluePrint)) {
+    if (bluePrint[key] !== "") {
+      update[key] = bluePrint[key];
+    }
+  }
+  await deletePhoto("community", req.params.id);
+  await Community.findOneAndUpdate({ _id: req.params.id }, update);
+  res.status(204).redirect("/admin/communities");
+};
+exports.deleteCommunity = async (req, res) => {
+  await deleteTemplate("community", req.params.id);
+  await deletePhoto("community", req.params.id);
+  await Community.findByIdAndDelete(req.params.id);
+  res.status(200).redirect("/admin/communities");
+};

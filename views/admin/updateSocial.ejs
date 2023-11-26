@@ -1,0 +1,27 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/socials/update/<%=result.id%>" method="post">
+    <table>
+        <tr>
+            <td>
+                <label for="">Web: </label>
+            </td>
+            <td>
+                <input type="text" class="text-fields" name="web" placeholder="Web site" value="<%=result.web%>" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="">Logo: </label>
+            </td>
+            <td>
+                <input type="text" class="text-fields" name="logo" placeholder="Logo" value="<%=result.logo%>" required>
+            </td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="button update">Submit</button></td>
+        </tr>
+    </table>
+  </form>
+<%-include("partials/footer")-%>

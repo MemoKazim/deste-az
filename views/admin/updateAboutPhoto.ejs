@@ -1,0 +1,29 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/abouts/update/photo/<%=result._id%>" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                <label for="newImage">New Image (Old image will be deleted!): </label>
+            </td>
+            <td>
+                <input type="file" name="image" accept="image/*" onchange="showUploadedImage(this)" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="newImage">New Image: </label>
+            </td>
+            <td>
+                <img id="newImage" src="#" alt="new-image" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="button update">Submit</button>
+            </td>
+        </tr>
+    </table>
+  </form>
+<%-include("partials/footer")-%>

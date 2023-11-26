@@ -1,0 +1,13 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+<div class="news-general">
+    <div class="news-title"><%-title-%></div>
+    <div class="news">
+        <%news.forEach((elem)=>{%>
+            <%-include("partials/news-card", {current: elem})-%>
+        <%});%>
+    </div>
+</div>
+
+<%-include("partials/footer")-%>

@@ -1,0 +1,29 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/contacts/create" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="">Title: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="title" placeholder="Title" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Logo: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="logo" placeholder="Logo" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" class="button create">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+<%-include("partials/footer")-%>

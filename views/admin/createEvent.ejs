@@ -1,0 +1,53 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/events/create" method="post" enctype="multipart/form-data">
+    <table>
+      <tr>
+        <td>
+          <label for="">Title: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="title" placeholder="Title" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Content: </label>
+        </td>
+        <td>
+            <textarea type="text" class="textarea-fields" name="content" placeholder="Content..." required></textarea>
+        </td>
+      </tr>
+      <tr id="imageUpload">
+        <td>
+          <label for="">Upload an Display Image: </label>
+        </td>
+        <td>
+          <input type="file" accept="image/*" name="image" onchange="showUploadedImage(this)">
+        </td>
+      </tr>
+      <tr id="imageShow">
+        <td>
+            <label for="newImage">Uploaded Image: </label>
+        </td>
+        <td>
+            <img id="newImage" src="#" alt="new-image" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Upload an Cover Image: </label>
+        </td>
+        <td>
+          <input type="file" accept="image/*" name="imageCover" required/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" class="button create">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+<%-include("partials/footer")-%>

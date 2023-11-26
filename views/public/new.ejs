@@ -1,0 +1,22 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+
+<div style="display: flex; align-items: flex-start;">
+    <div class="general-topic-3">
+        
+        <div class="general-border">
+            <div class="general-title">
+                <%-_new.title-%>
+            </div>
+            <img src="/images/<%=_new.image%>" alt="Logo" class="general-logo">
+            <div class="general-content">
+                <%-_new.content-%>
+            </div>
+        </div>
+    </div>
+    
+    <%-include("partials/sidebar")-%>
+</div>
+
+<%-include("partials/footer")-%>

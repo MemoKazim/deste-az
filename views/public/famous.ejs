@@ -1,0 +1,17 @@
+<%-include("partials/header", {title: title})-%>
+<%-include("partials/navbar")-%>
+
+<div class="famous-general">
+
+    <img class="famous-image" src="/images/<%=famouses.image%>"/>
+    
+    <div class="famous-details">
+        <div class="general-title" style="margin-top: 2rem;">
+            <%-famouses.name.charAt(0).toUpperCase() + famouses.name.slice(1);-%> <%-famouses.surname.charAt(0).toUpperCase() + famouses.surname.slice(1)-%>
+        </div>
+        <div class="famous-content">
+            <%-famouses.content-%>
+        </div>
+    </div>
+</div>
+<%-include("partials/footer")-%>
